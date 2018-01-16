@@ -45,8 +45,10 @@ $f3->route('GET /language/@lang', function($f3, $params){
             echo "Privet";break;
         case 'farsi':
             echo "Salam!";break;
+        case 'french':
+            $f3->reroute('/');
         default:
-            echo "Hello!";
+            $f3->error(404);
     }
     echo "<h1>Hello, " . $params['lang']." <h1>";
 });
