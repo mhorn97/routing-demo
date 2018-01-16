@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once ('vendor/autoload.php');
 
 
@@ -61,8 +63,15 @@ $f3->route('GET /hi/@first/@last', function($f3, $params) {
     $f3 -> set('last', $params['last']);
     $f3 -> set('message', 'Hi');
 
+    $_SESSION['first'] = $f3->get('first');
+    $_SESSION['last'] = $f3->get('last');
+
     $template = new Template();
     echo $template->render('views/hi.html');
+});
+
+$f3->route('GET /hi-again', function($f3, $params) {
+    echo "hello again " . $_SESSION['first'] . " " . $_SESSION['last'];
 });
 
 //Run Fat-Free Framework
