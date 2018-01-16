@@ -26,5 +26,10 @@ $f3 -> route('GET /page2', function() {
 }
 );
 
+$f3 -> route('GET /jewelry/rings/toe-rings', function() {
+    $template = new Template();
+    echo $template->render('views/toe-rings.html');
+});
+
 //Run Fat-Free Framework
 $f3->run();
