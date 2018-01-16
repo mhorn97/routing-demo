@@ -31,5 +31,25 @@ $f3 -> route('GET /jewelry/rings/toe-rings', function() {
     echo $template->render('views/toe-rings.html');
 });
 
+$f3->route('GET /hello/@name', function($f3, $params){
+    echo "<h1>Hello, " . $params['name']." <h1>";
+});
+
+$f3->route('GET /language/@lang', function($f3, $params){
+    switch($params['lang']){
+        case 'swahili':
+            echo 'Jumbo!'; break;
+        case 'spanish':
+            echo "Hola!";break;
+        case 'russian':
+            echo "Privet";break;
+        case 'farsi':
+            echo "Salam!";break;
+        default:
+            echo "Hello!";
+    }
+    echo "<h1>Hello, " . $params['lang']." <h1>";
+});
+
 //Run Fat-Free Framework
 $f3->run();
