@@ -32,7 +32,9 @@ $f3 -> route('GET /jewelry/rings/toe-rings', function() {
 });
 
 $f3->route('GET /hello/@name', function($f3, $params){
-    echo "<h1>Hello, " . $params['name']." <h1>";
+    $f3->set('name',$params['name']);
+    $template = new Template();
+    echo $template->render('views/hello.html');
 });
 
 $f3->route('GET /language/@lang', function($f3, $params){
