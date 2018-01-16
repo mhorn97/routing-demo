@@ -55,5 +55,15 @@ $f3->route('GET /language/@lang', function($f3, $params){
     echo "<h1>Hello, " . $params['lang']." <h1>";
 });
 
+$f3->route('GET /hi/@first/@last', function($f3, $params) {
+
+    $f3 -> set('first',$params['first']);
+    $f3 -> set('last', $params['last']);
+    $f3 -> set('message', 'Hi');
+
+    $template = new Template();
+    echo $template->render('views/hi.html');
+});
+
 //Run Fat-Free Framework
 $f3->run();
